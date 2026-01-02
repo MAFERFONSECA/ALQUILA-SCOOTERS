@@ -24,11 +24,7 @@ Este proyecto forma parte de las actividades académicas de la carrera de Ingeni
 - **C#** – Lenguaje principal de desarrollo
 - **WPF** – Interfaz gráfica
 - **SQL Server** – Base de datos
-- **XAMPP** – (si aplica) para pruebas locales
 - **Git & GitHub** – Control de versiones
-- **CustomTkinter / SQLite / Firebase** – (Si aplica según tu diseño final)
-
-> Nota: Ajusta las tecnologías exactas si esto cambia en tu repo.
 
 ---
 
