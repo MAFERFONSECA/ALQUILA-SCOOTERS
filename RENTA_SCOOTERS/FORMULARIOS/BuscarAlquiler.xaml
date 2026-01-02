@@ -1,0 +1,86 @@
+﻿<Window x:Class="RENTA_SCOOTERS.FORMULARIOS.BuscarAlquiler"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RENTA_SCOOTERS.FORMULARIOS"
+        mc:Ignorable="d"
+        Title="Buscar Alquiler" Background="#FF5193EE"
+        Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- DataGrid para mostrar los alquileres -->
+        <DataGrid x:Name="dataGridAlquileres" AutoGenerateColumns="False"                   
+          HorizontalAlignment="Center" VerticalAlignment="Center" 
+          SelectionMode="Single" Width="1200" Height="545">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Alquiler" Binding="{Binding AlquilerId}" Width="*"/>
+
+                <!-- Columna para la imagen del patín -->
+                <DataGridTemplateColumn Header="Imagen Patín" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="50" Height="50" Source="{Binding PatinImagen}" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding ClienteTelefono}" Width="*"/>
+                <DataGridTextColumn Header="Costo" Binding="{Binding Costo}" Width="*"/>
+                <DataGridTextColumn Header="Fecha y Hora" Binding="{Binding HoraFinalizacion}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Activo" Binding="{Binding EstaEnCurso}" Width="*"/>
+
+                <!-- Columna para la imagen de la credencial (más grande aún) -->
+                <DataGridTemplateColumn Header="Credencial" Width="3*">
+                    <!-- Triple el ancho de las demás columnas -->
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="300" Height="300" Source="{Binding CredencialImagen}" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+
+
+        <!-- Controles en la parte inferior -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
+            <Button Name="pdfButton" Width="50" Height="50" Margin="5"  Click="PdfButton_Click">
+                <Image Source="/Images/pdf_icon.png" Stretch="UniformToFill"/>
+            </Button>
+
+
+            <Button x:Name="volverButton" Width="61" Height="40" FontSize="18" 
+             BorderThickness="0" Padding="0" 
+             FocusVisualStyle="{x:Null}" Click="volverButton_Click" RenderTransformOrigin="1.999,0.447">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image x:Name="ButtonImage" Source="/Images/devolver.png" Stretch="Fill"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonImage" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+        <TextBox x:Name="buscaralquiler" HorizontalAlignment="Left" Margin="300,51,0,0" 
+         TextWrapping="Wrap" VerticalAlignment="Top" Width="922" Height="29" 
+         TextChanged="buscaralquiler_TextChanged"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="160,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" FontSize="16" Height="44" Foreground="White" FontWeight="Bold"><Run Language="es-mx" Text="Buscar alquileres:"/></TextBlock>
+    </Grid>
+</Window>

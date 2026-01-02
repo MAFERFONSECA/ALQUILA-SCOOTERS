@@ -1,0 +1,224 @@
+﻿<Window x:Class="ALQUILER_SCOOTERS.FORMULARIOS.paginaprincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ALQUILER_SCOOTERS.FORMULARIOS"
+        mc:Ignorable="d"
+        Title="paginaprincipal" 
+        Background="#FF5193EE"
+        Height="720"
+        Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
+
+    <!-- Define the resources at the Window level -->
+    <Window.Resources>
+        <local:TimeRemainingConverter x:Key="TimeRemainingConverter"/>
+    </Window.Resources>
+
+    <Grid Background="White" Margin="20,20,20,40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="291*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="72*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Panel de la izquierda -->
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.RowSpan="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Lista de patines -->
+                <TextBlock Grid.Row="0" Text="Selecciona un patín:" FontWeight="Bold" Margin="10,10,5,0"/>
+                <ListBox Grid.Row="1" x:Name="scooterListBox" SelectionMode="Multiple" ItemsSource="{Binding PatinesDisponibles}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="5" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="5">
+                                <!-- Mostrar la imagen -->
+                                <Image Source="{Binding PAT_IMAGEN}" Width="100" Height="100"/>
+
+                                <!-- Mostrar el nombre -->
+                                <TextBlock Text="{Binding PAT_NOMBRE}" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+                <!-- Combo Box y botón -->
+                <StackPanel Grid.Row="2" Margin="10,10,5,10">
+                    <ComboBox x:Name="timeComboBox" SelectionChanged="TimeComboBox_SelectionChanged" Margin="0,10,0,10" Height="40" FontSize="22">
+                        <ComboBoxItem Content="15 minutos" Tag="15"/>
+                        <ComboBoxItem Content="20 minutos" Tag="20"/>
+                        <ComboBoxItem Content="30 minutos" Tag="30"/>
+                        <ComboBoxItem Content="45 minutos" Tag="45"/>
+                        <ComboBoxItem Content="1 hora" Tag="60"/>
+                        <ComboBoxItem Content="1 hora promoción" Tag="Promo"/>
+                        <ComboBoxItem Content="1 hora y 15 minutos" Tag="75"/>
+                        <ComboBoxItem Content="1 hora y 30 minutos" Tag="90"/>
+                        <ComboBoxItem Content="Otro" Tag="Other"/>
+                    </ComboBox>
+                    <TextBox x:Name="customAmountTextBox" Margin="0,10,0,10" Height="40" FontSize="22" Visibility="Collapsed"/>
+                    <Image x:Name="capturedImage" Width="200" Height="150"/>
+                    <!-- Control Image para mostrar la foto capturada -->
+                    <Button Content="Tomar Foto" Click="tomarfoto_Click" Margin="0,5,0,5" Height="40" FontSize="18"/>
+                    <TextBlock x:Name="placeholderText" 
+                     Text="Ingresa tu número de teléfono" 
+                     Foreground="Black" 
+                     Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                     IsHitTestVisible="False"
+                     FontSize="18"
+                     Visibility="Visible"/>
+                    <TextBox x:Name="telefonotextbox" 
+                     Margin="0,5,0,5" 
+                     Height="40" 
+                     FontSize="14" 
+                     Padding="5,10,5,10" 
+                     MaxLength="10"
+                     PreviewTextInput="Telefonotextbox_PreviewTextInput" 
+         InputScope="TelephoneNumber"/>
+                    <Button Content="Iniciar" Click="StartButton_Click" Margin="0,5,0,5" Height="40" FontSize="18">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock Text="Venta total del día:" FontWeight="Bold" Margin="0,10,0,0"/>
+                    <TextBlock x:Name="totalCostTextBlock" Text="$0.00" FontSize="16"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.RowSpan="3">
+            <StackPanel Margin="15,10,10,10">
+                <TextBlock Text="Alquileres en curso:" FontWeight="Bold" Margin="0,0,0,10"/>
+                <ListBox x:Name="selectedScootersListBox" ItemsSource="{Binding AlquileresActivos}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <!-- Usar UniformGrid para distribuir elementos en dos columnas -->
+                            <UniformGrid Columns="2"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="5" Padding="10" Width="200" Height="180">
+                                <!-- Aumentar el ancho -->
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="Green"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding TiempoRestante}" Value="0">
+                                                <Setter Property="Background" Value="Red"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <Image Source="{Binding ImagenPatinBitmap}" Width="50" Height="50" />
+                                    <TextBlock Text="{Binding NombrePatin}" 
+                               HorizontalAlignment="Center" 
+                               FontSize="12" 
+                               FontWeight="Bold"/>
+                                    <!-- Negritas -->
+                                    <TextBlock Text="{Binding Costo, StringFormat=Costo: {0:C}}" />
+                                    <TextBlock Text="{Binding TiempoRestante, StringFormat=Tiempo restante: {0} segundos}" 
+                               TextWrapping="Wrap" />
+                                    <!-- Permitir salto de línea si es necesario -->
+                                    <Button Content="X" 
+                            Width="30" 
+                            Height="30" 
+                            FontSize="18" 
+                            Background="Red" 
+                            Foreground="White" 
+                            HorizontalAlignment="Right" 
+                            Margin="0,5,0,0" 
+                            Click="RemoveButton_Click" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+
+
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Botón para maximizar/minimizar -->
+        <Button x:Name="MaxMinButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,20" Width="40" Height="40" Click="MaxMinButton_Click" Grid.Row="2">
+            <Image x:Name="MaxMinButtonImage" Source="/Images/maximize.png" RenderTransformOrigin="1.756,0.581"/>
+        </Button>
+        <!-- Nuevo botón para generar PDF -->
+        <Button x:Name="GeneratePDFButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,110,20" Width="40" Height="40" Click="GeneratePDFButton_Click" Grid.Row="2">
+            <Image x:Name="GeneratePDFButtonImage" Source="/Images/alquiler.png"/>
+        </Button>
+        <!-- Nuevo botón para Mapa -->
+        <Button x:Name="abrirmapa" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,160,20" Width="40" Height="40"  Grid.Row="2" Click="abrirmapa_Click">
+            <Image  Source="/Images/SCOOTERS SDL CARGA.png"/>
+        </Button>
+        <!-- Nuevo botón para Reservas -->
+        <Button x:Name="usuarios" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,212,20" Width="39" Height="40" Click="abrirusuarios_Click" Grid.Row="2">
+            <Image  Source="/Images/usuario.png" RenderTransformOrigin="-1.472,0.583"/>
+        </Button>
+        
+        
+
+
+        <!-- Botón para cargar imagen en la esquina superior derecha -->
+        <Button x:Name="cargarImagenButton" 
+        Content="" 
+        FontSize="18" 
+        BorderThickness="0" 
+        Padding="0" 
+        FocusVisualStyle="{x:Null}" 
+        Margin="0,0,37,0" 
+        Click="cargarImagenButton_Click" 
+        HorizontalAlignment="Right" 
+        VerticalAlignment="Top"
+        Width="121" 
+        Height="40" Grid.Column="1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <!-- Imagen dentro del botón -->
+                        <Image x:Name="ButtonImage" Source="/Images/cerrarsesion.png" Stretch="UniformToFill"/>
+                    </Grid>
+                    <!-- Efecto al pasar el mouse -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonImage" Property="Opacity" Value="0.7"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+
+
+        <MediaElement HorizontalAlignment="Left" Height="100" Margin="5,100,0,0" VerticalAlignment="Top" Width="100" Name="mediaElement" />
+        <Button x:Name="minutos" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,61,20" Width="40" Height="40"  Grid.Row="2" Click="minutos_Click">
+            <Image x:Name="GeneratePDFButtonImage1" Source="/Images/minutos.png"/>
+        </Button>
+    </Grid>
+</Window>
+
+

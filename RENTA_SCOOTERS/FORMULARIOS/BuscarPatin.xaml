@@ -1,0 +1,72 @@
+﻿<Window x:Class="RENTA_SCOOTERS.FORMULARIOS.BuscarPatin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Buscar Patín"  
+        Background="#FF5193EE"
+        Height="720"
+        Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <!-- DataGrid centrado -->
+        <DataGrid x:Name="dataGridPatines" AutoGenerateColumns="False" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                  SelectionMode="Single" Width="1200" Height="621">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding PAT_ID}" Width="*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding PAT_NOMBRE}" Width="*"/>
+
+                <!-- Columna de imagen modificada para mostrar la imagen -->
+                <DataGridTemplateColumn Header="Imagen" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="50" Height="50" Source="{Binding PAT_IMAGEN}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- StackPanel para los botones -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,10,10">
+            <!-- Botón para seleccionar -->
+            <Button x:Name="seleccionarButton" Width="200" Height="50" FontSize="18" 
+                    Click="seleccionarButton_Click" BorderThickness="0" Padding="0" 
+                    FocusVisualStyle="{x:Null}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Image x:Name="ButtonImage" Source="/Images/SELECCIONAR2.png" Stretch="Fill"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonImage" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-- Botón Volver -->
+            <Button x:Name="volverButton" Width="61" Height="40" FontSize="18" 
+                    Click="volverButton_Click" BorderThickness="0" Padding="0" 
+                    FocusVisualStyle="{x:Null}" Margin="10,0,0,0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Image x:Name="ButtonImage" Source="/Images/devolver.png" Stretch="Fill"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonImage" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
+
+

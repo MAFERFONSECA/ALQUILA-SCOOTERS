@@ -1,0 +1,85 @@
+﻿<Window x:Class="ALQUILER_SCOOTERS.FORMULARIOS.reservas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ALQUILER_SCOOTERS.FORMULARIOS"
+        mc:Ignorable="d"
+        Title="reservas" 
+        Background="#FF5193EE"
+        Height="720"
+        Width="1280"
+        WindowStartupLocation="CenterScreen"
+         WindowState="Maximized"
+        ResizeMode="CanMinimize">
+    <Grid Background="White" Margin="20,20,20,40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Barra de título personalizada -->
+        <DockPanel VerticalAlignment="Top" Background="Gray" Height="30">
+            <TextBlock Text="Reservas" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White"/>
+            <Button Content="X" Width="30" Height="30" HorizontalAlignment="Right" Click="CloseButton_Click" Foreground="White" Background="Gray" BorderBrush="Gray"/>
+        </DockPanel>
+
+        <!-- Panel de la izquierda -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="Reservar Scooter" FontWeight="Bold" FontSize="22" Margin="0,40,0,10"/>
+
+            <TextBlock Text="Nombre del Cliente:" Margin="0,10,0,0"/>
+            <TextBox x:Name="nameTextBox" Height="40" FontSize="16"/>
+
+            <TextBlock Text="Número de Teléfono:" Margin="0,10,0,0"/>
+            <TextBox x:Name="phoneTextBox" Height="40" FontSize="16"/>
+
+            <TextBlock Text="Selecciona los scooters:" Margin="0,10,0,0"/>
+            <ListBox x:Name="scooterListBox" Height="230" SelectionMode="Multiple" FontSize="16">
+                <!-- Se llenará dinámicamente en el código C# -->
+            </ListBox>
+
+            <TextBlock Text="Fecha de inicio:" Margin="0,10,0,0"/>
+            <DatePicker x:Name="startDatePicker" Height="40" FontSize="16"/>
+
+            <TextBlock Text="Hora de inicio:" Margin="0,10,0,0"/>
+            <TextBox x:Name="startTimeTextBox" Height="40" FontSize="16"/>
+
+            <TextBlock Text="Duración:" Margin="0,10,0,0"/>
+            <ComboBox x:Name="durationComboBox" Height="40" FontSize="16">
+                <ComboBoxItem Content="15 minutos"/>
+                <ComboBoxItem Content="30 minutos"/>
+                <ComboBoxItem Content="45 minutos"/>
+                <ComboBoxItem Content="1 hora"/>
+                <ComboBoxItem Content="1 hora y 15 minutos"/>
+                <ComboBoxItem Content="1 hora y 30 minutos"/>
+            </ComboBox>
+
+            <Button Content="Reservar" Click="ReserveButton_Click" Margin="0,10,0,0" Height="40" FontSize="18"/>
+        </StackPanel>
+
+        <!-- Panel de la derecha -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Reservas actuales" FontWeight="Bold" FontSize="22" Margin="0,0,0,10"/>
+            <ListBox x:Name="reservationsListBox">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="5">
+                            <TextBlock Text="{Binding ClientName}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Phone}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding ScooterNames}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding StartDateTime, StringFormat='Inicio: {0:dd/MM/yyyy HH:mm}'}"/>
+                            <TextBlock Text="{Binding EndDateTime, StringFormat='Fin: {0:dd/MM/yyyy HH:mm}'}"/>
+                            <TextBlock Text="{Binding Duration}"/>
+                            <Button Content="Cancelar" Click="CancelButton_Click" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <!-- Botón para maximizar/minimizar -->
+        <Button x:Name="MaxMinButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Width="40" Height="40" Click="MaxMinButton_Click" Grid.Row="2">
+            <Image x:Name="MaxMinButtonImage" Source="/Images/maximize.png"/>
+        </Button>
+    </Grid>
+</Window>

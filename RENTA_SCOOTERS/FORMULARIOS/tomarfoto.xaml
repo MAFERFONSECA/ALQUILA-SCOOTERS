@@ -1,0 +1,39 @@
+﻿<Window x:Class="RENTA_SCOOTERS.FORMULARIOS.tomarfoto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Captura de Foto" 
+        Background="#FF5193EE"
+        Height="720"
+        Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
+    <Grid Background="White" Margin="20,20,20,40">
+        <!-- Control Image para mostrar la cámara -->
+        <Image x:Name="imgPreview" Width="996" Height="489" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,54,0,0" />
+
+        <!-- Botones para tomar y eliminar foto -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button x:Name="btnTomarFoto" Content="" Click="btnTomarFoto_Click" Margin="5" Height="100" Width="300" Padding="0" BorderThickness="0" FocusVisualStyle="{x:Null}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Image Source="/Images/TOMARF.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="btnEliminarFoto" Content="" Click="btnEliminarFoto_Click" Height="100" Width="300" Padding="0" BorderThickness="0" FocusVisualStyle="{x:Null}">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Image Source="/Images/TOMARFF.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69FDAE84-B64A-4145-BB15-0C268AFDC3F8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RENTA_SCOOTERS</RootNamespace>
+    <AssemblyName>RENTA_SCOOTERS</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="MaterialDesignColors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.3.1.0\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=5.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.5.1.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="sapbusinessobjects.wpf.viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.8.0.10\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="FORMULARIOS\BuscarAlquiler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\BuscarPatin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\BuscarUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\carga.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FORMULARIOS\editarminutos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FORMULARIOS\Mapa.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FORMULARIOS\paginaprincipal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FORMULARIOS\registropatin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\reportealquiler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\reservas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FORMULARIOS\tomarfoto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FORMULARIOS\usuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoolToColorConverter.cs" />
+    <Compile Include="CLASES\alquiler.cs" />
+    <Compile Include="CLASES\AlquilerManager.cs" />
+    <Compile Include="CLASES\conexion.cs" />
+    <Compile Include="CLASES\minutos.cs" />
+    <Compile Include="CLASES\patin.cs" />
+    <Compile Include="CLASES\usuario.cs" />
+    <Compile Include="FORMULARIOS\BuscarAlquiler.xaml.cs">
+      <DependentUpon>BuscarAlquiler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\BuscarPatin.xaml.cs">
+      <DependentUpon>BuscarPatin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\BuscarUsuario.xaml.cs">
+      <DependentUpon>BuscarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\carga.xaml.cs">
+      <DependentUpon>carga.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\editarminutos.xaml.cs">
+      <DependentUpon>editarminutos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\Mapa.xaml.cs">
+      <DependentUpon>Mapa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\paginaprincipal.xaml.cs">
+      <DependentUpon>paginaprincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\registropatin.xaml.cs">
+      <DependentUpon>registropatin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\repalquileres.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repalquileres.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FORMULARIOS\reportealquiler.xaml.cs">
+      <DependentUpon>reportealquiler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\reservas.xaml.cs">
+      <DependentUpon>reservas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\tomarfoto.xaml.cs">
+      <DependentUpon>tomarfoto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIOS\usuario.xaml.cs">
+      <DependentUpon>usuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="FORMULARIOS\repalquileres.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>repalquileres.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Bici.png" />
+    <Resource Include="Images\BIRD1.png" />
+    <Resource Include="Images\BIRD2.png" />
+    <Resource Include="Images\BIRD3.png" />
+    <Resource Include="Images\BIRDDELANTERO.png" />
+    <Resource Include="Images\BIRDNEGRO.png" />
+    <Resource Include="Images\ChicoRosa.png" />
+    <Resource Include="Images\ChicoVerde.png" />
+    <Resource Include="Images\Gotrax.png" />
+    <Resource Include="Images\mapasdl.png" />
+    <Resource Include="Images\mapa_icon.png" />
+    <Resource Include="Images\maximize.png" />
+    <Resource Include="Images\minimize.png" />
+    <Resource Include="Images\PANEL LOGIN.png" />
+    <Resource Include="Images\pdf_icon.png" />
+    <Resource Include="Images\RAZORAZUL.png" />
+    <Resource Include="Images\reserva_icon.png" />
+    <Resource Include="Images\SCOOTERS SDL CARGA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BOTONTOMARFOTO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BOTONELIMINARFOTO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TOMARF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ELIMINARF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TOMARFF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GuardarScooter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BuscarScooter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CARGAR IMAGEN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\VOLVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SELECCIONAR2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\devolver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GuardarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EliminarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BuscarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fondoazul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alquiler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\advertencia.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cerrarsesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\minutos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\guardarminutos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\eliminarminutos.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>
